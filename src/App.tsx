@@ -108,19 +108,7 @@ export default function SearchAppBar() {
                       {result.package.name}
                     </Link>
                   }
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        adf
-                      </Typography>
-                      {result.package.description}
-                    </React.Fragment>
-                  }
+                  secondary={result.package.description}
                 />
               </ListItem>
             );
