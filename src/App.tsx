@@ -30,7 +30,7 @@ import {
 } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import ErrorIcon from "@mui/icons-material/Error";
-import BugReportIcon from "@mui/icons-material/BugReport";
+import PestControlIcon from "@mui/icons-material/PestControl";
 import HomeIcon from "@mui/icons-material/Home";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
@@ -39,7 +39,7 @@ import { PackageLinks } from "./types/package";
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const ICONS = {
-  bug: <BugReportIcon />,
+  bugs: <PestControlIcon />,
   homepage: <HomeIcon />,
   npm: <InventoryIcon />,
   repository: <AccountTreeIcon />,
@@ -106,9 +106,10 @@ export default function SearchAppBar() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
+          <AppBar position="static" data-testid="app-bar">
+            <Toolbar data-testid="tool-bar">
               <Typography
+                data-testid="logo"
                 variant="h6"
                 noWrap
                 component="div"
@@ -121,6 +122,7 @@ export default function SearchAppBar() {
                   <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
+                  data-testid="search-input"
                   placeholder="Search NPM packages"
                   inputProps={{ "aria-label": "search" }}
                   sx={{ width: "100%" }}
@@ -129,6 +131,7 @@ export default function SearchAppBar() {
                 />
               </Search>
               <IconButton
+                data-testid="theme-button"
                 sx={{ ml: 1 }}
                 onClick={colorMode.toggleColorMode}
                 color="inherit"
